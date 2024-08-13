@@ -1,0 +1,22 @@
+<div class="user-details-container" *ngIf="user; else loading">
+  <mat-card appearance="outlined">
+    <mat-card-header class="custom-header">
+      <img mat-card-md-image [src]="user.avatar" class="user-avatar">
+      <mat-card-title-group class="title-group">
+        <mat-card-title>{{ user.first_name }} {{ user.last_name }}</mat-card-title>
+        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <p>User ID: {{ user.id }}</p>
+      <p>{{ user.first_name }} {{ user.last_name }} is a user with the email address {{ user.email }}.</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="goBack()">Back to User List</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<ng-template #loading>
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</ng-template>

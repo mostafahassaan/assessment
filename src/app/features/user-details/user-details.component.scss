@@ -1,0 +1,23 @@
+.user-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50% !important;
+  margin-right: 16px;
+}
+
+.title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-header {
+  display: flex;
+  align-items: center;
+}

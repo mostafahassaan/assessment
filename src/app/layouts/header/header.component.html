@@ -1,0 +1,20 @@
+<mat-toolbar class="header">
+  <span (click)="onNavigateHome()" appClickable>Assessment - maids.cc</span>
+  <span class="spacer"></span>
+  <mat-form-field subscriptSizing="dynamic" class="example-full-width" appearance="fill">
+    <mat-label>Search User by ID</mat-label>
+    <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto" placeholder="Enter user ID" />
+    <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn" (optionSelected)="onUserSelected($event.option.value)">
+      <mat-option *ngFor="let item of filteredUsers$ | async" [value]="item">
+        <ng-container *ngIf="isUser(item); else errorTemplate">
+          {{ item.first_name }} {{ item.last_name }} (ID: {{ item.id }})
+        </ng-container>
+        <ng-template #errorTemplate>
+          <ng-container *ngIf="isError(item)">
+            <span class="error-message">{{ item.error }}</span>
+          </ng-container>
+        </ng-template>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</mat-toolbar>

@@ -1,0 +1,22 @@
+.spacer {
+  flex: 1 1 auto;
+}
+.header{
+  background-color: #4878bc;
+  padding: 3rem 3rem;
+  color: white;
+}
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-full-width {
+  width: 300px;
+}
+
+.error-message {
+  color: red;
+  font-style: italic;
+}

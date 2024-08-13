@@ -1,0 +1,28 @@
+<div class="user-list-container">
+  @if (isLoading) {
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  }
+  @if (!isLoading) {
+    @if (users.length === 0) {
+      <p>No users found</p>
+    } @else {
+      @for (user of users; track $index) {
+        <mat-card appClickable class="user-card" (click)="viewUserDetails(user.id)">
+          <mat-card-header>
+            <div mat-card-avatar class="user-avatar">
+              <img [src]="user.avatar" alt="{{ user.first_name }}" />
+            </div>
+            <mat-card-title>{{ user.first_name }} {{ user.last_name }}</mat-card-title>
+            <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      }
+    }
+    <mat-paginator
+      [length]="totalUsers"
+      [pageSize]="perPage"
+      [showFirstLastButtons]="true"
+      (page)="onPageChange($event)"
+    ></mat-paginator>
+  }
+</div>
